@@ -13,8 +13,42 @@
 <body>
     <main>
         <h1 class="text-center text-light pt-5">CALCOLA IL PREZZO DEL TUO BIGLIETTO</h1>
+            <div class="card">
+                <div class="card-body" style="width: 90rem;">
+                    <div id="modulo-input-utente">
+                        <div class="container d-flex justify-content-center g-20 p-30">
+                           
+                            <div id="id-user">
+                                <label for="user">Nome Cognome</label>
+                                <input type="text" id="user">
+                            </div>
+                          
+                            <div id="km-input">
+                                <label for="km">Lunghezza in Km</label>
+                                <input type="number" id="km" placeholder="inserisci i km" required>
+                            </div>
+                        
+                            <div id="eta-input">
+                                <label for="eta">La tua età</label>
+                                <select name="" id="eta" class="eta-utente" required>
+                                    <option value="Scegli fascia età">Scegli fascia età...</option>
+                                    <option value="minorenne">Minorenne</option>
+                                    <option value="maggiorenne">Maggiorenne</option>
+                                    <option value="senior65">Senior 65</option>
+                                </select>
+                            </div>
+                        </div>
         
-    </main>
+                        <div class="container d-flex justify-content-center pt-4">
+                            <input type="submit" id="btn-submit" value="Genera">
+                            <input type="button" id="btn-annull" value="Annulla">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+     </main>
     
     
     <!-- LINK JAVASCRIPT -->

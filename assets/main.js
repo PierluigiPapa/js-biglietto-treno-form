@@ -29,7 +29,7 @@ const kmUtente= document.getElementById('km');
 const etaUtente = document.getElementById('eta');
 
 //costante per il bottone da inserire nel form per calcolare il prezzo del biglietto
-const submitPrice = document.getElementById('submit');
+const submitPrezzo = document.getElementById('submit');
 
 //costante per il bottone di annullare 
 const deletePrice =  document.getElementById('delete')
@@ -48,18 +48,40 @@ const codeTrain = document.querySelector ('code')
 const prezzoTrain = document.querySelector ('pay')
 
 //calcolo del biglietto
-submitPrice.addEventListener ( 'click', function () {
+submitPrezzo.addEventListener('click',
+function() {
     //prezzo del bigliettostandard //
-            let prezzoBiglietto = costoKm * Number(kmUtente.value);
-            let TypeTicket = 'Prezzo standard';
+    let prezzoBiglietto = costoKm * Number(kmUtente.value);
+    let TypeTicket = 'Prezzo standard';
 
-            // prezzo del biglietto Under18
-            if etaUtente.value === 'minorenne') {
-                prezzoBiglietto = (prezzoBiglietto * Under18);
-                let TypeTicket = 'Prezzo Under18';
+    // prezzo del biglietto Under18
+    if (etaUtente.value === 'minorenne') {
+    prezzoBiglietto = (prezzoBiglietto * Under18);
+    let TypeTicket = 'Prezzo Under18';
 
-            //prezzo del biglietto Over65
-            } else if (etaUtente.value === 'oltre65') {
-                prezzoBiglietto = (prezzoBiglietto * Over65);
-                let TypeTicket = 'Prezzo Over65';
-            }
+    //prezzo del biglietto Over65
+    } else if (etaUtente.value === 'oltre65') {
+    prezzoBiglietto = (prezzoBiglietto * Over65);
+    let TypeTicket = 'Prezzo Over65';
+    }
+
+    console.log(submitPrice.value);
+    console.log(prezzoBiglietto.toFixed(2));
+    console.log(TypeTicket);
+
+    userNomeCognome.innerHTML = elementIdUtente.value;
+    offerTrain.innerHTML = TypeTicket;
+    prezzoTrain.innerHTML = `${prezzoBiglietto.toFixed(2)} €`;
+
+    ticketVirtual.classList.remove('hidden');
+});
+
+submitPrice.addEventListener ( 'click', 
+function () {
+        elementIdUtente.value = '';
+        elementKmUtente.value = '';
+        elementEtaUtente.value = null;
+        console.log('annullo i bottoni');
+
+        ticketVirtual.classList.add('hidden');
+});
