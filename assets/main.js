@@ -29,16 +29,18 @@ const kmUtente= document.getElementById('km');
 const etaUtente = document.getElementById('eta');
 
 //costante per il bottone da inserire nel form per calcolare il prezzo del biglietto
-const submitPrezzo = document.getElementById('submit');
-
-//costante per il bottone di annullare 
-const deletePrice =  document.getElementById('delete')
+const generaPrezzo = document.getElementById('genera');
 
 //costante per generare il nome e il cognome del passeggero
 const userPasseggero = document.getElementById('user');
 
+// console.log(KmUtente, etaUtente, submitPrezzo, userPasseggero);
+
 //costante per la creazione del biglietto virtuale
 const ticketVirtual = document.getElementById ('ticket')
+
+//costante per il bottone di annullare 
+const deletePrice =  document.getElementById('delete')
 
 //serie di costanti per gli elementi generati nel biglietto
 const userNomeCognome= document.querySelector ('nomecognome')
@@ -48,8 +50,12 @@ const codeTrain = document.querySelector ('code')
 const prezzoTrain = document.querySelector ('pay')
 
 //calcolo del biglietto
-submitPrezzo.addEventListener('click',
-function() {
+generaPrezzo.addEventListener ( "click", 
+function () {
+    // console.log('ho cliccato il bottone');
+    // console.log(etaUtente.value);
+    // console.log(kmUtente.value);
+
     //prezzo del bigliettostandard //
     let prezzoBiglietto = costoKm * Number(kmUtente.value);
     let TypeTicket = 'Prezzo standard';
@@ -65,22 +71,21 @@ function() {
     let TypeTicket = 'Prezzo Over65';
     }
 
-    console.log(submitPrice.value);
+    console.log(userPasseggero.value);
     console.log(prezzoBiglietto.toFixed(2));
     console.log(TypeTicket);
 
-    userNomeCognome.innerHTML = elementIdUtente.value;
+    userNomeCognome.innerHTML = userPasseggero.value;
     offerTrain.innerHTML = TypeTicket;
     prezzoTrain.innerHTML = `${prezzoBiglietto.toFixed(2)} €`;
 
     ticketVirtual.classList.remove('hidden');
-});
+} );
 
-submitPrice.addEventListener ( 'click', 
-function () {
-        elementIdUtente.value = '';
-        elementKmUtente.value = '';
-        elementEtaUtente.value = null;
+deletePrice.addEventListener ( 'click', function () {
+        userPasseggero.value = '';
+        kmUtente.value = '';
+        etaUtente.value = null;
         console.log('annullo i bottoni');
 
         ticketVirtual.classList.add('hidden');
