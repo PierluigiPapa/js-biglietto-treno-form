@@ -32,25 +32,25 @@ const etaUtente = document.getElementById('eta');
 const generaPrezzo = document.getElementById('genera');
 
 //costante per generare il nome e il cognome del passeggero
-const userPasseggero = document.getElementById('user');
+const userViaggiatore = document.getElementById('user');
 
-// console.log(KmUtente, etaUtente, submitPrezzo, userPasseggero);
+// console.log(KmUtente, etaUtente, generaPrezzo, userViaggiatore);
 
 //costante per la creazione del biglietto virtuale
-const ticketVirtual = document.getElementById ('ticket')
+const bigliettoVirtuale = document.getElementById ('ticket')
 
 //costante per il bottone di annullare 
 const deletePrice =  document.getElementById('delete')
 
 //serie di costanti per gli elementi generati nel biglietto
-const userNomeCognome= document.querySelector ('nomecognome')
-const offerTrain = document.querySelector ('offerta')
-const sectionTrain = document.querySelector ('section')
-const codeTrain = document.querySelector ('code')
-const prezzoTrain = document.querySelector ('pay')
+const userPersona= document.querySelector ('.nomecognome')
+const offerTrain = document.querySelector ('.offerta')
+const sectionTrain = document.querySelector ('.section')
+const codeTrain = document.querySelector ('.code')
+const prezzoTrain = document.querySelector ('.pay')
 
 //calcolo del biglietto
-generaPrezzo.addEventListener ( "click", 
+generaPrezzo.addEventListener ( 'click', 
 function () {
     // console.log('ho cliccato il bottone');
     // console.log(etaUtente.value);
@@ -58,35 +58,35 @@ function () {
 
     //prezzo del bigliettostandard //
     let prezzoBiglietto = costoKm * Number(kmUtente.value);
-    let TypeTicket = 'Prezzo standard';
+    let tipoTicket = 'Prezzo standard';
 
     // prezzo del biglietto Under18
     if (etaUtente.value === 'minorenne') {
     prezzoBiglietto = (prezzoBiglietto * Under18);
-    let TypeTicket = 'Prezzo Under18';
+    let tipoTicket = 'Prezzo Under18';
 
     //prezzo del biglietto Over65
     } else if (etaUtente.value === 'oltre65') {
     prezzoBiglietto = (prezzoBiglietto * Over65);
-    let TypeTicket = 'Prezzo Over65';
+    let tipoTicket = 'Prezzo Over65';
     }
 
-    console.log(userPasseggero.value);
+    console.log(userViaggiatore.value);
     console.log(prezzoBiglietto.toFixed(2));
-    console.log(TypeTicket);
+    console.log(tipoTicket);
 
-    userNomeCognome.innerHTML = userPasseggero.value;
-    offerTrain.innerHTML = TypeTicket;
+    userPersona.innerHTML = userViaggiatore.value;
+    offerTrain.innerHTML = tipoTicket;
     prezzoTrain.innerHTML = `${prezzoBiglietto.toFixed(2)} €`;
 
-    ticketVirtual.classList.remove('hidden');
-} );
+    bigliettoVirtuale.classList.remove("hidden");
+});
 
 deletePrice.addEventListener ( 'click', function () {
-        userPasseggero.value = '';
-        kmUtente.value = '';
-        etaUtente.value = null;
-        console.log('annullo i bottoni');
+    userViaggiatore.value = '';
+    kmUtente.value = '';
+    etaUtente.value = null;
+    console.log('annullo i bottoni');
 
-        ticketVirtual.classList.add('hidden');
+    bigliettoVirtuale.classList.add('hidden');
 });
