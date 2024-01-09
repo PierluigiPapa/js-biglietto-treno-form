@@ -7,95 +7,66 @@
 
     <!-- LINK CSS -->
     <link rel="stylesheet" href="./assets/style.css">
-    <!-- LINK BOOTSTRAP -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
-    <main>
-        <h1 class="text-center text-light pt-5">CALCOLA IL PREZZO DEL TUO BIGLIETTO</h1>
-        <div class="container"> 
-            <div class="card">
-                <div class="card-body d-flex justify-content-center" style="width: 90rem;">
-                    <div id="modulo-input-utente">
-                        <div class="container d-flex justify-content-center g-20 p-30">
-                           
-                            <div id="id-user">
-                                <label for="user">Nome Cognome</label>
-                                <input type="text" id="user">
-                            </div>
-                          
-                            <div id="km-input">
-                                <label for="km">Km da percorrere</label>
-                                <input type="number" id="km" placeholder="inserisci i km" required>
-                            </div>
-                        
-                            <div id="eta-input">
-                                <label for="eta">Fascia d'età</label>
-                                <select name="" id="eta" class="eta-utente" required>
-                                    <option value="Scegli fascia età">Scegli fascia età...</option>
-                                    <option value="minorenne">Minorenne</option>
-                                    <option value="maggiorenne">Maggiorenne</option>
-                                    <option value="senior65">Senior 65</option>
-                                </select>
-                            </div>
-                        </div>
-        
-                        <div class="container d-flex justify-content-center pt-4">
-                            <input type="submit" id="genera" value="Genera" class="me-3">
-                            <input type="button" id="delete" value="Annulla">
-                        </div>  
-                    </div>
-                </div>
+
+    <div class="wrapper">
+        <h2>CALCOLA IL PREZZO DEL TUO BIGLIETTO</h2>
+        <div class="top-container">
+          <div class="row">
+            <div class="col">
+              <label for="nome-utente">Nome e cognome</label>
+              <input id="nome-utente" type="text" name="" value="" placeholder="Inserisci il tuo nome">
             </div>
+            <div class="col">
+              <label for="km">Chilometraggio</label>
+              <input id="km" type="number" name="" value="" placeholder="Km da percorrere">
+            </div>
+            <div class="col">
+              <label for="fascia-eta">Fascia d'et&agrave;</label>
+              <select id="fascia-eta" class="" name="">
+                <option value="minorenne">Minorenne</option>
+                <option value="maggiorenne">Maggiorenne</option>
+                <option value="over65">Over 65</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <button id="genera" class="btn">Genera</button>
+            <button id="annulla" class="btn">Annulla</button>
+          </div>
         </div>
 
-        <h1 class="text-center text-light pt-5">IL TUO BIGLIETTO</h1>
-        <div class="container pt-4"> 
-            <div class="card">
-                <div class="card-body d-flex justify-content-center" style="width: 90rem;">
-                    <div id="ticket" class="hidden">
-                        <div id="output-utent me-4">
-                            <h4>DETTAGLIO PASSEGGERO</h4>
-                            <hr>
-                            <div class="d-flex">
-                                <div class="op-naming w-20 pe-5">
-                                <h5>Nome passeggero</h5>
-                                <p class="nomecognome"></p>
-                            </div>
-
-                            <div class="op-offert w-20 pe-3">
-                                <h5>Offerta</h5>
-                                <p class="offerta"></p>
-                            </div>
-
-                            <div class="op-sector w-20 pe-3">
-                                <h5>Carrozza</h5>
-                                <p>5</p>
-                            </div>
-
-                            <div class="op-code-ticket w-20 pe-3">
-                                <h5>Codice CP</h5>
-                                <p>92911</p>
-                            </div>
-
-                            <div class="op-prezzo-finale w-20 pe-3">
-                                <h5>Costo biglietto</h5>
-                                <p class="pay"></p>
-                            </div>
-                        </div>
-                        <hr>
-                    </div>
-                </div>
+        <h2>IL TUO BIGLIETTO</h2>
+        <div id="biglietto" class="bottom-container hidden">
+          <h3 class="padding">Dettaglio passegeri</h3>
+          <div class="dettaglio-biglietto row_bottom">
+            <div class="col grey">
+              <h3>NOME PASSEGGERO</h3>
+              <h4 id="nome-passegero"></h4>
             </div>
+            <div class="col">
+              <table>
+                <tr>
+                  <th>Offerta</th>
+                  <th>Carrozza</th>
+                  <th>Codice CP</th>
+                  <th>Costo biglietto</th>
+                </tr>
+                <tr>
+                  <td id="offerta"></td>
+                  <td id="carrozza"></td>
+                  <td id="codice-cp"></td>
+                  <td id="costo-biglietto"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
         </div>
-
-        
-     </main>
+      </div>
     
     
     <!-- LINK JAVASCRIPT -->
     <script src="./assets/main.js"></script>
-    <!-- LINK BOOTSTRAP JAVASCRIPT -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
