@@ -47,9 +47,10 @@ generaRisultato.addEventListener('click', function(){
         prezzoOffertaHtml.innerHTML = "Biglietto standard"
         risultatoFinaleHtml.innerHTML = ((kmHtml.value*0.21)).toFixed(2) + "€"
     //SE passeggero O65 = sconto 40%
-    } else if (etaHtml.value === "over65")
+    } else if (etaHtml.value === "over65") {
     prezzoOffertaHtml.innerHTML = "Biglietto speciale O65"
     risultatoFinaleHtml.innerHTML = ((kmHtml.value*0.21)*0.6).toFixed(2) + "€"
+}
 })
 
 cancellaBigliettoHtml.addEventListener('click', function(){
