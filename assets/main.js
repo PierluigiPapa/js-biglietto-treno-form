@@ -1,78 +1,67 @@
-let buttonGenera = document.getElementById('genera');
-buttonGenera.addEventListener( 'click',
-function() {
+//Costante per il nome del passeggero
+const nomeCognomeHTML = document.getElementById ('nomeCognome')
+//Costante per l'età del passeggero per stabilire lo sconto
+const kmHtml = document.getElementById ('km')
+//Costante per stabilire la fascia d'età
+const etaHtml = document.getElementById ('eta')
+//Costante per generare il risultato
+const generaRisultato = document.getElementById ('btnGenera')
+//Costante per generare il numero della carrozza
+const carrozzaHtml = document.getElementById ('carrozza')
+//Costante per generare il numero del codice CP
+const codiceCpHtml = document.getElementById ('codice')
+//Costanti per la comparsa del biglietto quando si clicca su genera 
+const h2Html = document.getElementById('ticket')
+const bigliettoHTML= document.getElementById('biglietto')
+//Costante per generare il nome e il cognome del passeggero sul biglietto
+const passeggeroHtml = document.getElementById('passeggeroNomeCognome')
+//Costante per generare la tipologia del biglietto
+const prezzoOffertaHtml = document.getElementById ('prezzoOfferta')
+//Costante per generare il prezzo del biglietto
+const risultatoFinaleHtml = document.getElementById ('bigliettoFinale')
+//Costante per cancellare il biglietto con il bottone annulla
+const cancellaBigliettoHtml = document.getElementById ('btnAnnulla')
 
-  let inputEta = document.getElementById("fascia-eta");
-  let eta = inputEta.value;
-  console.log(eta);
+h2Html.style.display="none"
+bigliettoHTML.style.display="none"
 
-  let inputNome = document.getElementById("nome-utente");
-  let nomeUtente = inputNome.value;
-  console.log(nomeUtente);
+//Processo per generare il biglietto
+generaRisultato.addEventListener('click', function(){
+    h2Html.style.display = "block"
+    bigliettoHTML.style.display = "block"
 
+    let codiceCarrozza = RandomNumber(0,10)
+    let codiceCp = RandomNumber(100, 10000)
 
-  let inputKm = document.getElementById("km");
-  let percorrenza = parseInt(inputKm.value);
-  console.log(percorrenza);
+    carrozzaHtml.innerHTML = codiceCarrozza
+    codiceCpHtml.innerHTML = codiceCp
+   
+    passeggeroHtml.innerHTML = nomeCognomeHTML.value
 
-  let prezzoAlKilometro = 0.21;
-  let prezzoBigliettoSenzaSconto = prezzoAlKilometro * percorrenza;
-  console.log(prezzoBigliettoSenzaSconto);
+    //SE passeggero U18 = sconto 20%
+    if (etaHtml.value === "minorenne") {
+        prezzoOffertaHtml.innerHTML = "Biglietto speciale U18"
+        risultatoFinaleHtml.innerHTML = ((kmHtml.value*0.21)*0.8).toFixed(2) + "€" 
+    //SE passeggero dai 18 ai 65 anni = Prezzo standard
+    } else if (etaHtml.value === "maggiorenne") {
+        prezzoOffertaHtml.innerHTML = "Biglietto standard"
+        risultatoFinaleHtml.innerHTML = ((kmHtml.value*0.21)).toFixed(2) + "€"
+    //SE passeggero O65 = sconto 40%
+    } else if (etaHtml.value === "over65")
+    prezzoOffertaHtml.innerHTML = "Biglietto speciale O65"
+    risultatoFinaleHtml.innerHTML = ((kmHtml.value*0.21)*0.6).toFixed(2) + "€"
+})
 
-  let offerta = "Tariffa Standard"
+cancellaBigliettoHtml.addEventListener('click', function(){
 
-  // let eta = parseInt(prompt("Quanti anni hai ?"));
-  // let prezzoAlKilometro = 0.21;
-  // let prezzoBigliettoSenzaSconto = prezzoAlKilometro * percorrenza;
-  // let scritto = "Il prezzo del biglietto è "
-  // let euro = " Euro"
-  // console.log(prezzoBigliettoSenzaSconto);
-  // 2 Il prezzo del biglietto è definito in base ai km (0.21 € al km),
-  // ma va applicato uno sconto del 20% per i minorenni e del 40% per gli over 65.
-
-  if (eta == "minorenne") {
-   ((prezzoBigliettoSenzaSconto / 100) * 80);
-   offerta = "Sconto Minorenne";
-  } else if (eta == "over65") {
-   ((prezzoBigliettoSenzaSconto / 100) * 60);
-   offerta = "Sconto Maggiorenne";
-  } else {
-   (prezzoBigliettoSenzaSconto);
-  }
-
-  let carrozza = Math.floor(Math.random() * 9) +1;
-  let cp = Math.floor(Math.random() * (100000 - 90000 + 1 )) + 90000;
-
-
-  document.getElementById('nome-passegero').innerHTML = nomeUtente;
-  document.getElementById('offerta').innerHTML = offerta;
-  document.getElementById('costo-biglietto').innerHTML = prezzoBigliettoSenzaSconto.toFixed(2);
-  document.getElementById('carrozza').innerHTML = carrozza;
-  document.getElementById('codice-cp').innerHTML = cp;
-
-  let bigliettoDiv = document.getElementById('biglietto');
-  bigliettoDiv.classList.remove('hidden');
-  bigliettoDiv.classList.add('show');
- }
-
-);
-
-
-let buttonAnnulla = document.getElementById('annulla');
-buttonAnnulla.addEventListener( 'click',
-  function() {
-    document.getElementById('nome-passegero').innerHTML = '';
-    document.getElementById('offerta').innerHTML = '';
-    document.getElementById('costo-biglietto').innerHTML = '';
-    document.getElementById('carrozza').innerHTML = '';
-    document.getElementById('codice-cp').innerHTML = '';
+    h2Html.style.display="none"
+    bigliettoHTML.style.display="none"
+})
 
 
-    document.getElementById('km').value = '';
-    document.getElementById("fascia-eta").value = '';
-    document.getElementById("nome-utente").value = '';
-    
-    let bigliettoDiv = document.getElementById('biglietto')
-    bigliettoDiv.classList.remove('show');
-    bigliettoDiv.classList.add('hidden');
-  })
+function RandomNumber(min, max) {
+    return Math.floor (Math.random()*(max-min+1) + min)
+}
+
+// console.log (nomeCognomeHTML.value, kmHtml.value, etaHtml.value)
+
