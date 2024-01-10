@@ -25,7 +25,7 @@ const cancellaBigliettoHtml = document.getElementById ('btnAnnulla')
 h2Html.style.display="none"
 bigliettoHTML.style.display="none"
 
-//Processo per generare il biglietto
+//Funzione per generare il biglietto
 generaRisultato.addEventListener('click', function(){
     h2Html.style.display = "block"
     bigliettoHTML.style.display = "block"
@@ -53,13 +53,14 @@ generaRisultato.addEventListener('click', function(){
 }
 })
 
+//Funzione per cancellare il biglietto
 cancellaBigliettoHtml.addEventListener('click', function(){
 
     h2Html.style.display="none"
     bigliettoHTML.style.display="none"
 })
 
-
+//Funzione per generare il numero random per la carrozza e per il codice CP
 function RandomNumber(min, max) {
     return Math.floor (Math.random()*(max-min+1) + min)
 }
